@@ -40,7 +40,7 @@ jobs:
 
       - name: Compress files
         run: |
-          zip -j oled-mask-${{ steps.get_version.outputs.version }}-x86_64-pc-windows-msvc.zip ./assets-windows/*
+          zip -j oled-mask-${{ steps.get_version.outputs.version }}-x86_64-pc-windows-msvc.zip ./assets-windows/annotation.xml ./assets-windows/target/release/*.exe
 
       - name: Upload release assets
         uses: shogo82148/actions-upload-release-asset@v1
