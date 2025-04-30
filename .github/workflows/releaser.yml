@@ -13,6 +13,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup VS environment
+        shell: cmd
+        run: |
+          for /f "usebackq delims=" %%i in (`vswhere.exe -latest -property installationPath`) do echo %%i\VC\Auxiliary\Build>>%GITHUB_PATH%
       - name: Build
         run: cargo build --release --verbose
       - name: Upload assets
